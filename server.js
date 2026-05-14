@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 
 // Routes
+const movieRoutes = require("./routes/movieRoutes");
+app.use("/api", movieRoutes);
 
 // Port
 app.listen(PORT, () => {

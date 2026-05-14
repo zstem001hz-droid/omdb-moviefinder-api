@@ -6,3 +6,10 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.json());
+
+// Routes
+
+// Port
+app.listen(PORT, () => {
+    console.log(`Server is running on PORT: ${PORT}`);
+});

@@ -25,7 +25,23 @@ const searchMovies = async (req, res) => {
 };
 
 // Get Movie Details
-const getMovieDetails = async (req, res) => {};
+const getMovieDetails = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const response = await axios.get("http://www.omdbapi.com/", {
+      params: {
+        i: id,
+        apikey: process.env.OMDB_API_KEY,
+      },
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching movie details:", error.message);
+    res.sstatus(500).json({ error: "Failed to fetch movie details." });
+  }
+};
 
 // Exports
 module.exports = { searchMovies, getMovieDetails };

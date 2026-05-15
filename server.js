@@ -1,4 +1,4 @@
-// Dependncies
+// Dependencies
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -13,5 +13,5 @@ app.use("/api", movieRoutes);
 
 // Port
 app.listen(PORT, () => {
-    console.log(`Server is running on PORT: ${PORT}`);
+  console.log(`Server is running on PORT: ${PORT}`);
 });

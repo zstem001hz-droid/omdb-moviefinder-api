@@ -39,7 +39,7 @@ const getMovieDetails = async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error("Error fetching movie details:", error.message);
-    res.sstatus(500).json({ error: "Failed to fetch movie details." });
+    res.status(500).json({ error: "Failed to fetch movie details." });
   }
 };
 

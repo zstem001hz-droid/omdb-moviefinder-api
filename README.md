@@ -81,11 +81,13 @@ omdb-moviefinder-api/
 ### Usage Examples
 
 **Search:**
+
 ```
 http://localhost:3001/api/search?title=Adaptation
 ```
 
 **Movie Details:**
+
 ```
 http://localhost:3001/api/movies/tt0268126
 ```
@@ -101,3 +103,18 @@ This API follows REST architectural constraints:
 - **Standard HTTP methods** — GET for data retrieval
 - **JSON responses** — consistent data format for all endpoints
 
+---
+
+## Reflections
+
+**1. Why is it important to use a server as a proxy for external API calls rather than calling the API directly from the browser?**
+
+Calling the API directly from the browser would expose your API key to anyone who inspects the network tab in DevTools. By routing requests through the server, the API key stays hidden in `.env` and never reaches the client.
+
+**2. How does the routes/controllers separation improve the maintainability of the codebase?**
+
+Routes only define what path and HTTP method trigger an action. Controllers contain the actual logic. This means you can update business logic without touching the routing layer, and vice versa — making the code easier to debug, test, and scale.
+
+**3. What would happen if the `.env` file was accidentally committed to GitHub with a real API key inside it?**
+
+The key would be publicly exposed. Anyone could find it, use your API quota, or if it's a paid service, rack up charges on your account. GitHub also scans for exposed keys and notifies API providers who may revoke the key automatically.

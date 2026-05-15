@@ -105,6 +105,25 @@ This API follows REST architectural constraints:
 
 ---
 
+## Testing
+
+Endpoints were tested using Postman and the browser.
+
+### Search
+`GET http://localhost:3001/api/search?title=Adaptation`
+
+Returns a list of all movies containing "Adaptation" in the title — including the 2002 Nicolas Cage film. This highlights an important characteristic of the OMDb `s` parameter: it performs a broad search, not an exact match. A future enhancement could add additional filtering to narrow results.
+
+### Movie Details
+`GET http://localhost:3001/api/movies/tt0268126`
+
+Returns full details for *Adaptation* (2002) using its specific IMDb ID — a precise lookup that returns exactly one result.
+
+### Validation
+`GET http://localhost:3001/api/search`
+
+Returns `400 Bad Request` with `{ "error": "Title query parameter is required" }` when no title is provided.
+
 ## Reflections
 
 **1. Why is it important to use a server as a proxy for external API calls rather than calling the API directly from the browser?**
